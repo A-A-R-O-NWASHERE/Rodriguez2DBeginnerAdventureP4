@@ -6,6 +6,12 @@ public class HealthCollectable : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("object that entered the trigger:" + other);
+        PlayerController controller = other.GetComponent<PlayerController>();
+
+        if (controller != null)
+        {
+            controller.ChangeHealth(1);
+            Destroy(gameObject);
+        }
     }
 }
